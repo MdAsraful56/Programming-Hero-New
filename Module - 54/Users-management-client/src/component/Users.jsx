@@ -31,6 +31,9 @@ const Users = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                const newUsers = [...users, data]
+                setUsers(newUsers);
+                form.reset();
             })
     }
 
