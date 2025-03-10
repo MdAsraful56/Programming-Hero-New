@@ -12,7 +12,7 @@ function App() {
       <Route path='/' element={ <Root/> }>
         <Route index element={ <Users/> } />
         <Route path='/users' element={ <UsersShow/> } loader= {()=> fetch('http://localhost:5000/users')} />
-        <Route path='/update' element={ <Updates/> } />
+        <Route path='/update/:id' element={ <Updates/> } loader= {({params}) => fetch(`http://localhost:5000/users/${params.id}`)} />
       </Route>
     )
   )

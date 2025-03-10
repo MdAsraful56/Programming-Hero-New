@@ -30,7 +30,7 @@ const UsersShow = () => {
                 {
                     users.map(user => <p key={user._id}>
                         {user.name} : {user.email} 
-                        <Link to={`update/${user._id}`} > <button>Update</button> </Link>
+                        <Link to={`/update/${user._id}`} > <button>Update</button> </Link>
                         <button onClick={()=>{handleDelete(user._id)}}>X</button>
                         </p>)
                 }

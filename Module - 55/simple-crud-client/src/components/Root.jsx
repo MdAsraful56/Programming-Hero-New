@@ -6,7 +6,7 @@ const Root = () => {
         <div>
             <h2>Simple Crud Client</h2>
             <h4><Link to='/users'>Users Show</Link></h4>
-            <h4> <Link to={`/update/:id`}>Update Users</Link> </h4>
+            {/* <h4> <Link to={`/update/:id`}>Update Users</Link> </h4> */}
             <Outlet/>
         </div>
     );
