@@ -1,44 +1,25 @@
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router';
 import './App.css'
+import Root from './components/Root';
+import Users from './components/Users';
+import UsersShow from './components/UsersShow';
 
 function App() {
 
-
-  const handleSubmit = e => {
-
-    e.preventDefault()
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const user = {name, email};
-    console.log(user);
-
-    fetch('http://localhost:5000/users', {
-      method: "POST",
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(user)
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-      });
-
-
-  }
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path='/' element={ <Root/> }>
+        <Route index element={ <Users/> } />
+        <Route path='/users' element={ <UsersShow/> } loader= {()=> fetch('http://localhost:5000/users')} />
+      </Route>
+    )
+  )
 
 
 
   return (
     <>
-      <h2>Simple Crud Client</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="name" id="" />
-        <br />
-        <input type="email" name="email" id="" />
-        <br />
-        <input type="submit" value="Add User" />
-      </form>
+      <RouterProvider router={router} />
     </>
   )
 }
