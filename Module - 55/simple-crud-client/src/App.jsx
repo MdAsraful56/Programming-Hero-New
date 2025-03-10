@@ -3,6 +3,7 @@ import './App.css'
 import Root from './components/Root';
 import Users from './components/Users';
 import UsersShow from './components/UsersShow';
+import Updates from './components/Updates';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
       <Route path='/' element={ <Root/> }>
         <Route index element={ <Users/> } />
         <Route path='/users' element={ <UsersShow/> } loader= {()=> fetch('http://localhost:5000/users')} />
+        <Route path='/update' element={ <Updates/> } />
       </Route>
     )
   )
